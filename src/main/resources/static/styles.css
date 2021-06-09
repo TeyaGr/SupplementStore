@@ -1,0 +1,30 @@
+body {
+	margin-top: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.container {
+	width: 90%;
+}
+.navbar {
+	
+  margin-bottom: 20px;
+  background-color: #313131;
+ navbar-dark ;
+ li-color black;
+
+}
+
+
+.section-headline {
+	color:#313131;
+	font-size:35px;
+	font-family:'Times New Roman';
+	text-aligh: center;
+	margin-top:90px;
+
+	
+}
+
+
+

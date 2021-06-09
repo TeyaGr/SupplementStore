@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head th:replace="fragments/header::fragments-header"/>
+<body>
+<div th:replace="fragments/header::navbar"/>
+<div class="container">
+ <div class="row" style="margin-top:30px; text-align:center; margin-left:200px"> 
+<div class="col-xs-8">
+<hr style="width:100%;margin-left:120px"/>
+<h2 class="section-headline" style="text-align:center; margin-left:250px"><span>User Account</span></h2>
+</div>
+<div class="row" style="margin-top:60px;">
+<div class="col-xs-9 col-xs-offset-3">
+
+<!-- nav tabs -->
+<ul class="nav nav-tabs" style="margin-top:20px;margin-left:-200px"> 
+<li th:classapends="${classActiveNewAccount}?  'active' "><a href="#tab-1" data-toggle="tab"><span style="color:#1a1a1a; font-size:20px;">Create a new account</span></a></li> 
+ <li th:classapends="${classActiveLogin}?  'active' "><a href="#tab-2" data-toggle="tab"><span style="color:#1a1a1a; font-size:20px;">Login</span></a></li>
+ <li th:classapends="${classActiveForgotPassword}?  'active' "><a href="#tab-3" data-toggle="tab"><span style="color:#800000; font-size:20px;">Forgot username/password</span></a></li> 
+
+ </ul>
+ <!-- tab panels -->
+<div class="tab-content">
+<!-- Create a new user -->
+<div class="tab-pane fade" id="tab-1">
+<div class="panel-group">
+<div class="panel panel-default"style="border:none;">
+<div class="panel-body" style="margin-top:20px;">
+<!-- <div class="alert alert-info" th:if="${emailSent}">An email has been sent to your address</div> -->
+<form th:action="@{/newUser}", method="post">
+<div class="form-group">
+<label for="newUsername"> *Username</label>&nbsp;<span style="color:red"; th:if="${usernameExists}">That username is already in use</span>
+<input required="required" type="text" class="form-conrol" id="newUsername" name="username"/>
+ <p style="color:#828282">Enter your username here</p>
+</div>
+
+
+<div class="form-group">
+<label for="email"> *Email Address</label>&nbsp;<span style="color:red"; th:if="${emailExists}">That email address is already in use</span>
+<input required="required" type="text" class="form-conrol" id="email" name="email"/>
+<p style="color:#828282">Enter your email address here</p>
+</div>
+
+<button type="submit" class="btn btn-primary">Create a new account</button>
+
+</form>
+</div>
+</div>
+</div>
+</div>
+<!-- Login -->
+<div class="tab-pane fade" id="tab-2"th:classapends="${classActiveLogin}?'in active'">
+<div class="panel-group">
+<div class="panel panel-default"style="border:none;">
+<div class="panel-body" style="margin-top:20px;">
+<form >
+<div class="form-group">
+<label for="newUsername"> *Username</label>&nbsp;<span style="color:red"; th:if="${emailExists}">That email address is already in use</span>
+<input required="required" type="text" class="form-conrol" id="newUsername" name="username"/>
+ <p style="color:#828282">Enter your username here</p>
+</div>
+
+
+<div class="form-group">
+<label for="email"> *Password</label>
+<input required="required" type="password" class="form-conrol" id="password" name="password"/>
+<p style="color:#828282">Enter your password</p>
+</div>
+
+<button type="submit" class="btn btn-primary">Login</button>
+
+</form>
+</div>
+</div>
+</div>
+</div>
+<!-- Forgot pass -->
+<div class="tab-pane fade" id="tab-3">
+<div class="panel-group">
+<div class="panel panel-default"style="border:none;">
+<div class="panel-body" style="margin-top:20px;">
+<form >
+<div class="form-group">
+  <label for="recoverEmail">*Email</label>
+ <input required="required" type="text"class="form-control" id="recoverEmail" name="email"/>  
+<p style="color:#828282">Enter your email address here</p>
+</div>
+
+<button type="submit" class="btn btn-primary">Submit</button>
+
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Endofcontainer -->
+</div>
+
+
+
+<div th:replace="fragments/header::body-bottom-scripts"/>
+</body>
+</html>

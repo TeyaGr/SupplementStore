@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en" xmlns:sec="http://www.w3.org/1000/xhtml">
+<head th:replace="fragments/adminHeader::fragments-adminHeader"/>
+
+<body>
+<div th:replace="fragments/adminHeader::admin-navbar"/>
+
+<div class="container">
+<div class="table-responsive">
+<table id="productListTable" class="tabletable-bordered table-hover">
+<thead>
+<tr>
+<th>Product Name</th>
+<th>Product Brand</th>
+<th>Category</th>
+<th>List Price</th>
+<th>Retail Price</th>
+<th>In Stock No.</th>
+<th>Product Status</th>
+<th>Description</th>
+<th>Delete</th>
+</tr>
+</thead>
+<tbody>
+<tr data-th-each="product:${productList}">
+<td><input hidden="hidden" name="id" th:value="${product.id}"/></td>
+<td th:text="${product.name}"></td>
+<td th:text="${product.brand}"></td>
+<td th:text="${product.category}"></td>
+<td th:text="${product.listPrice}"></td>
+<td th:text="${product.ourPrice}"></td>
+<td th:text="${product.inStockNumber}"></td>
+<td th:text="${product.active}"></td>
+<td th:text="${product.description}"></td>
+<td>Delete</td>
+
+
+
+</tr>
+
+</tbody>
+
+</table>
+
+
+</div>
+
+
+</div>
+
+	<div th:replace="fragments/adminHeader::body-bottom-scripts" />
+
+</body>

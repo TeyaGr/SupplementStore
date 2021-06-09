@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en" xmlns:sec="http://www.w3.org/1000/xhtml">
+<head th:replace="fragments/adminHeader::fragments-adminHeader"/>
+
+<body>
+<div th:replace="fragments/adminHeader::admin-navbar"/>
+<div class="container">
+<div class="row">
+<div class="form-horizontal" th:action="@{/add}" method="post" enctype="multipart/form-data">
+<fieldset>
+ <legend class="center-block">New product information</legend>
+
+  <div class="form-group">
+    <label class="col-md-2 control-label" for="productName">Product Name</label>
+    <div class="col-md-8">
+    <input type="text" name="productName" class="form-control" id="productName" th:value="${product.name}" required="required"/>
+    <span class="help-block">Name of the product</span>
+    </div>
+  </div>
+  <!-- Brand -->
+   <div class="form-group">
+    <label class="col-xs-2 control-label" for="brand">Product Brand</label>
+    <div class="col-xs-8">
+    <select th:value="${product.brand}" id="brand" name="brand" class="form-control">
+    <option value="" selected="selected" disabled="disabled">Select a brand</option>
+        <option value="Dymathize" >Dymathize</option>
+        <option value="OptimumNutrition" >Optimum Nutrition</option>
+        <option value="Galvanize" >Galvanize</option>
+    <option value="Amix" >Amix</option>
+    <option value="TrecNutrition" >Trec Nutrition</option>
+    </select>
+    </div>
+  </div>
+  <!-- Category -->
+  
+    <div class="form-group">
+    <label class="col-xs-2 control-label" for="category">Category</label>
+    <div class="col-xs-8">
+    <select th:value="${product.category}" id="category" name="category" class="form-control">
+    <option value="" selected="selected" disabled="disabled">Select a category</option>
+        <option value="Protein" >Protein</option>
+        <option value="Creatine" >Creatine</option>
+        <option value="Bcaa" >Bcaa</option>
+    <option value="SnacksDesserts" >Snacks/Desserts</option>
+    <option value="Diet" >Diet</option>
+    </select>
+    </div>
+  </div>
+  <!-- List Price -->
+    <div class="form-group">
+    <label class="col-xs-2 control-label" for="listPrice">List Price</label>
+   <div class="col-xs-8">
+   <div class="input-group">
+   <span class="input-gropup-addon">$</span>
+   <input th:value="${product.listPrice}"type="number" class="form-control" id="listPrice" name="listPrice"/>
+   
+   </div>
+   <span class="help-block">List price of the product</span>
+   </div>
+  </div>
+    <!--Retail Price -->
+    <div class="form-group">
+    <label class="col-xs-2 control-label" for="ourPrice">Retail Price</label>
+   <div class="col-xs-8">
+   <div class="input-group">
+   <span class="input-gropup-addon">$</span>
+   <input th:value="${product.ourPrice}
+   "type="number" class="form-control" id="ourPrice"name="ourPrice"/>
+   
+   </div>
+   <span class="help-block">Retail price of the product</span>
+   </div>
+  </div>
+  
+      <!--InStock No -->
+    <div class="form-group">
+    <label class="col-xs-2 control-label" for="inStockNumber">In Stock No.</label>
+   <div class="col-xs-8">
+   <div class="input-group">
+      <input th:value="${product.inStockNumber}
+   "type="number" class="form-control" id="inStockNumber"name="inStockNumber" placeholder="No. of items in stock"/>
+   
+   </div>
+   <span class="help-block">No. of items in stock</span>
+   </div>
+  </div>
+  
+  
+        <!--Status -->
+    <div class="form-group">
+    <label class="col-xs-2 control-label" for="status">Product status</label>
+   <div class="col-xs-8">
+   <label><input value="false" type="radio" name="active"/>Available</label>
+    <label><input value="false" type="radio" name="active"/>Unavailable</label>
+   <span class="help-block">Is the item available?</span>
+   </div>
+  </div>
+  <!-- Desc -->
+    <div class="form-group">
+    <label for="description">Description</label>
+    <textarea  name="description" rows="5" class="form-control" id="description" th:value="${product.description}" placeholder="Description"></textarea>
+    <span class="help-block">Description of the product</span>
+  </div>
+  <!-- Upload image -->
+  <div class="form-group">
+  <div class="col-xs-2">
+  <label for="pPhoto">Upload an image of the product</label>
+  
+  </div>
+  <div class="col-xs-8">
+  <input id="pPhoto" type="file" name="pPhoto" th:value="${product.pPhoto}"/>
+  
+  
+  </div>
+  </div>
+  <button type="submit" class="btn btn-success">Add the product</button>
+  <a class="btn btn-danger" th:href="@{/adminPortal}">Cancel</a>
+  </fieldset>
+  </div>
+</form>
+</div>
+
+
+	<div th:replace="fragments/adminHeader::body-bottom-scripts" />
+
+</body>
